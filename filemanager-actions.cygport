@@ -1,0 +1,54 @@
+inherit gnome2
+
+NAME="filemanager-actions"
+VERSION=3.4
+RELEASE=1
+CATEGORY="GNOME"
+SUMMARY="File manager actions framework"
+DESCRIPTION="File Manager Actions is an extension for the Nautilus and Caja file
+managers which allows the user to add arbitrary program to be launched through
+the file manager popup menu of selected files."
+
+PATCH_URI="
+	3.4-cygwin-module.patch
+	3.4-cygwin-stdio.patch
+"
+
+CYGCONF_ARGS="--with-caja --with-nautilus --without-nemo"
+MAKEOPTS+=" pkgdocdir=\$(docdir)"
+
+PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc caja-actions nautilus-actions"
+filemanager_actions_CONTENTS="
+	--exclude=html
+	etc/postinstall/${NAME}.sh
+	usr/bin/cygfma-core.dll
+	usr/bin/fma-config-tool.exe
+	usr/lib/filemanager-actions/cygfma-io-*.dll
+	usr/libexec/filemanager-actions/
+	usr/share/applications/fma-config-tool.desktop
+	usr/share/doc/${NAME}/
+	usr/share/filemanager-actions/
+	usr/share/fma-config-tool/
+	usr/share/gnome/help/fma-config-tool/
+	usr/share/icons/hicolor/*/apps/filemanager-actions.*
+	usr/share/locale/*/LC_MESSAGES/filemanager-actions.mo
+	usr/share/omf/fma-config-tool/
+"
+filemanager_actions_devel_REQUIRES="libgdk_pixbuf2.0-devel libglib2.0-devel"
+filemanager_actions_devel_CONTENTS="
+	usr/include/filemanager-actions/
+	usr/lib/filemanager-actions/libfma-core.dll.a
+"
+filemanager_actions_doc_CONTENTS="
+	usr/share/doc/filemanager-actions/html/
+	usr/share/gtk-doc/html/filemanager-actions-3/
+"
+caja_actions_CATEGORY="MATE"
+caja_actions_SUMMARY="Actions extension for Caja file manager"
+caja_actions_CONTENTS="
+	usr/lib/caja/extensions-2.0/cygfma-caja-*.dll
+"
+nautilus_actions_SUMMARY="Actions extension for Nautilus file manager"
+nautilus_actions_CONTENTS="
+	usr/lib/nautilus/extensions-3.0/cygfma-nautilus-*.dll
+"

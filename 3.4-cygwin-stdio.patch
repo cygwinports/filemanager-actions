@@ -1,0 +1,10 @@
+--- origsrc/filemanager-actions-3.4/src/core/fma-icontext.c	2017-02-15 16:43:42.000000000 -0600
++++ src/filemanager-actions-3.4/src/core/fma-icontext.c	2017-03-16 16:26:54.773290200 -0500
+@@ -622,6 +622,7 @@ is_candidate_for_show_if_true( const FMA
+ 
+ 	if( command && strlen( command )){
+ 		ok = FALSE;
++#undef stdout
+ 		gchar *stdout = NULL;
+ 		g_spawn_command_line_sync( command, &stdout, NULL, NULL, NULL );
+ 

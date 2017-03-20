@@ -1,0 +1,11 @@
+--- origsrc/filemanager-actions-3.4/src/core/fma-module.c	2017-02-15 16:34:22.000000000 -0600
++++ src/filemanager-actions-3.4/src/core/fma-module.c	2017-03-16 17:22:59.675011500 -0500
+@@ -235,7 +235,7 @@ fma_module_load_modules( void )
+ {
+ 	static const gchar *thisfn = "fma_module_load_modules";
+ 	const gchar *dirname = PKGLIBDIR;
+-	const gchar *suffix = ".so";
++	const gchar *suffix = "." G_MODULE_SUFFIX;
+ 	GList *modules;
+ 	GDir *api_dir;
+ 	GError *error;
