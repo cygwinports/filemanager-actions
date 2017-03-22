@@ -52,3 +52,4 @@ nautilus_actions_SUMMARY="Actions extension for Nautilus file manager"
 nautilus_actions_CONTENTS="
 	usr/lib/nautilus/extensions-3.0/cygfma-nautilus-*.dll
 "
+filemanager_actions_debuginfo_OBSOLETES="caja-actions-debuginfo"
